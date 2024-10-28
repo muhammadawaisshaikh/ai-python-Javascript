@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { GeminiGoogleAiService } from '../../services/gemini-google-ai/gemini-google-ai.service';
-import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-text-based-gemini',
@@ -22,7 +21,7 @@ export class TextBasedGeminiComponent implements OnInit {
    * Communication with Gemini using Frontend Compatible Service
    * @param text 
    */
-  askGemini(text: string): Subscription {
+  askGemini(text: string) {
     return this.genAiService.askGemini(text).subscribe({
       next: (response: string) => {
         console.log(response);
