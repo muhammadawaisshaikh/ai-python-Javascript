@@ -5,3 +5,11 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 ## Googel Ai
 https://www.npmjs.com/package/@google/generative-ai
 https://ai.google.dev/gemini-api/docs
+
+## Init the App
+- git clone https://github.com/muhammadawaisshaikh/ai-python-Javascript.git
+- cd angular
+- npm install
+- npm start / ng serve
+- Genrate your api key from here: https://aistudio.google.com/apikey
+- Add the key in environment.ts file
