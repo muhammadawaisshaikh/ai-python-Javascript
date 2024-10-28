@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "angular-ai-recipes": {
+    "angular-gemini-recipes": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/angular-ai-recipes",
+            "outputPath": "dist/angular-gemini-recipes",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
@@ -34,12 +34,7 @@
             "styles": [
               "src/styles.scss"
             ],
-            "scripts": [],
-            "server": "src/main.server.ts",
-            "prerender": true,
-            "ssr": {
-              "entry": "server.ts"
-            }
+            "scripts": []
           },
           "configurations": {
             "production": {
@@ -69,10 +64,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "angular-ai-recipes:build:production"
+              "buildTarget": "angular-gemini-recipes:build:production"
             },
             "development": {
-              "buildTarget": "angular-ai-recipes:build:development"
+              "buildTarget": "angular-gemini-recipes:build:development"
             }
           },
           "defaultConfiguration": "development"

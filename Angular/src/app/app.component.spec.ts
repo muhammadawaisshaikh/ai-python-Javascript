@@ -14,16 +14,16 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have the 'angular-ai-recipes' title`, () => {
+  it(`should have the 'angular-gemini-recipes' title`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('angular-ai-recipes');
+    expect(app.title).toEqual('angular-gemini-recipes');
   });
 
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, angular-ai-recipes');
+    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, angular-gemini-recipes');
   });
 });
