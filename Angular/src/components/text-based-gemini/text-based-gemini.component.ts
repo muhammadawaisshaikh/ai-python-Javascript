@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { GeminiGoogleAiService } from '../../services/gemini-google-ai/gemini-google-ai.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-text-based-gemini',
@@ -8,7 +9,9 @@ import { GeminiGoogleAiService } from '../../services/gemini-google-ai/gemini-go
   templateUrl: './text-based-gemini.component.html',
   styleUrl: './text-based-gemini.component.scss'
 })
-export class TextBasedGeminiComponent implements OnInit {
+export class TextBasedGeminiComponent implements OnInit, OnDestroy {
+  private subscription: Subscription | null = null;
+
   constructor(
     private genAiService: GeminiGoogleAiService
   ) { }
@@ -22,7 +25,7 @@ export class TextBasedGeminiComponent implements OnInit {
    * @param text 
    */
   askGemini(text: string) {
-    this.genAiService.askGemini(text).subscribe({
+    this.subscription = this.genAiService.askGemini(text).subscribe({
       next: (response: string) => {
         console.log(response);
         alert(`Response from Gemini: ${response}`);
@@ -35,5 +38,12 @@ export class TextBasedGeminiComponent implements OnInit {
         console.log('Gemini response completed successfully.');
       }
     });
+  }
+
+  ngOnDestroy(): void {
+    // Unsubscribe from the Observable if it exists
+    if (this.subscription) {
+      this.subscription.unsubscribe();
+    }
   }
 }
