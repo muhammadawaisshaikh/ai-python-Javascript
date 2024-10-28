@@ -22,7 +22,7 @@ export class TextBasedGeminiComponent implements OnInit {
    * @param text 
    */
   askGemini(text: string) {
-    return this.genAiService.askGemini(text).subscribe({
+    this.genAiService.askGemini(text).subscribe({
       next: (response: string) => {
         console.log(response);
         alert(`Response from Gemini: ${response}`);
