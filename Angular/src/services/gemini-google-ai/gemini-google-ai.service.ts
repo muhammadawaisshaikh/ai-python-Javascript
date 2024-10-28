@@ -18,7 +18,7 @@ export class GeminiGoogleAiService {
   /**
    * Communicate with Gemini - Google Ai using text prompt
    */
-  geminiText(prompt: string): Observable<string> {
+  askGemini(prompt: string): Observable<string> {
     const model: any = this.genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 
     // converting Promise to Observable - latest way "After Deprecation"
