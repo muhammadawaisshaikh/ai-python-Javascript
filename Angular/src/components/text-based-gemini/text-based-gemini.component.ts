@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { GeminiGoogleAiService } from '../../services/gemini-google-ai/gemini-google-ai.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-text-based-gemini',
@@ -21,10 +22,19 @@ export class TextBasedGeminiComponent implements OnInit {
    * Communication with Gemini using Frontend Compatible Service
    * @param text 
    */
-  askGemini(text: string) {
-    this.genAiService.geminiText(text).then(result => {
-      console.log(result);
-      alert(`Response from Gemini: ${result}`)
-    })
+  askGemini(text: string): Subscription {
+    return this.genAiService.geminiText(text).subscribe({
+      next: (response: string) => {
+        console.log(response);
+        alert(`Response from Gemini: ${response}`);
+      },
+      error: (error: any) => {
+        console.error('Error:', error);
+        alert('An error occurred while fetching the response from Gemini.');
+      },
+      complete: () => {
+        console.log('Gemini response completed successfully.');
+      }
+    });
   }
 }
