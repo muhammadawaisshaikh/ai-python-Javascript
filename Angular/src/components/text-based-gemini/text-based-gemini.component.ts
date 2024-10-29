@@ -1,6 +1,5 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnInit, signal } from '@angular/core';
 import { GeminiGoogleAiService } from '../../services/gemini-google-ai/gemini-google-ai.service';
-import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-text-based-gemini',
@@ -9,8 +8,8 @@ import { Subscription } from 'rxjs';
   templateUrl: './text-based-gemini.component.html',
   styleUrl: './text-based-gemini.component.scss',
 })
-export class TextBasedGeminiComponent implements OnInit, OnDestroy {
-  private subscription: Subscription | null = null;
+export class TextBasedGeminiComponent implements OnInit {
+  response = signal('');
 
   constructor(private genAiService: GeminiGoogleAiService) {}
 
@@ -23,25 +22,12 @@ export class TextBasedGeminiComponent implements OnInit, OnDestroy {
    * @param text
    */
   askGemini(text: string) {
-    // this.subscription = this.genAiService.askGemini(text).subscribe({
-    //   next: (response: string) => {
-    //     console.log(response);
-    //     alert(`Response from Gemini: ${response}`);
-    //   },
-    //   error: (error: any) => {
-    //     console.error('Error:', error);
-    //     alert('An error occurred while fetching the response from Gemini.');
-    //   },
-    //   complete: () => {
-    //     console.log('Gemini response completed successfully.');
-    //   }
-    // });
-  }
-
-  ngOnDestroy(): void {
-    // Unsubscribe from the Observable if it exists
-    if (this.subscription) {
-      this.subscription.unsubscribe();
-    }
+    this.genAiService.askGemini(text).then(
+      (result: string) => {
+        this.response.set(result);
+      },
+      (error: Error) => {
+        alert(error);
+      });
   }
 }
