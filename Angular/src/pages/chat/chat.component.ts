@@ -13,8 +13,8 @@ import { CommonModule } from '@angular/common';
 })
 export class ChatComponent {
   messages: { text: string; isUser: boolean }[] = [];
-  userInput = '';
-  isLoading = false;
+  userInput: string = '';
+  isLoading: boolean = false;
 
   constructor(private geminiService: GeminiGoogleAiService) {}
 
