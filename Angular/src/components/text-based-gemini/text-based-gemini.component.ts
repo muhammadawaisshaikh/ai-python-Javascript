@@ -7,14 +7,12 @@ import { Subscription } from 'rxjs';
   standalone: true,
   imports: [],
   templateUrl: './text-based-gemini.component.html',
-  styleUrl: './text-based-gemini.component.scss'
+  styleUrl: './text-based-gemini.component.scss',
 })
 export class TextBasedGeminiComponent implements OnInit, OnDestroy {
   private subscription: Subscription | null = null;
 
-  constructor(
-    private genAiService: GeminiGoogleAiService
-  ) { }
+  constructor(private genAiService: GeminiGoogleAiService) {}
 
   ngOnInit(): void {
     this.askGemini('Hey, How are you doing today?');
@@ -22,22 +20,22 @@ export class TextBasedGeminiComponent implements OnInit, OnDestroy {
 
   /**
    * Communication with Gemini using Frontend Compatible Service
-   * @param text 
+   * @param text
    */
   askGemini(text: string) {
-    this.subscription = this.genAiService.askGemini(text).subscribe({
-      next: (response: string) => {
-        console.log(response);
-        alert(`Response from Gemini: ${response}`);
-      },
-      error: (error: any) => {
-        console.error('Error:', error);
-        alert('An error occurred while fetching the response from Gemini.');
-      },
-      complete: () => {
-        console.log('Gemini response completed successfully.');
-      }
-    });
+    // this.subscription = this.genAiService.askGemini(text).subscribe({
+    //   next: (response: string) => {
+    //     console.log(response);
+    //     alert(`Response from Gemini: ${response}`);
+    //   },
+    //   error: (error: any) => {
+    //     console.error('Error:', error);
+    //     alert('An error occurred while fetching the response from Gemini.');
+    //   },
+    //   complete: () => {
+    //     console.log('Gemini response completed successfully.');
+    //   }
+    // });
   }
 
   ngOnDestroy(): void {
