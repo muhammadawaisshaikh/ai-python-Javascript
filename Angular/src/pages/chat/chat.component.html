@@ -1,0 +1,21 @@
+<div class="chat-container">
+  <div class="messages">
+    <div
+      *ngFor="let msg of messages"
+      [ngClass]="msg.isUser ? 'user-message' : 'bot-message'"
+    >
+      {{ msg.text }}
+    </div>
+    <div *ngIf="isLoading" class="loader"></div>
+  </div>
+  <form (submit)="onSubmit()" class="input-form">
+    <input
+      type="text"
+      [(ngModel)]="userInput"
+      (keyup.enter)="onSubmit()"
+      placeholder="Type your message here..."
+      name="chatInput"
+      required
+    />
+  </form>
+</div>

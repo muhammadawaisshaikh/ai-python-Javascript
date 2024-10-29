@@ -1,4 +1,4 @@
 export const environment = {
-    production: false,
-    googleAiKey: ""
-}
+  production: false,
+  googleAiKey: '',
+};
