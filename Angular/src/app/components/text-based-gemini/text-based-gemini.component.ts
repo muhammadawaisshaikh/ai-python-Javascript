@@ -28,6 +28,7 @@ export class TextBasedGeminiComponent implements OnInit {
       },
       (error: Error) => {
         alert(error);
-      });
+      },
+    );
   }
 }
