@@ -5,8 +5,6 @@ import { Injectable } from '@angular/core';
 })
 export class QuizRecipeHelperService {
 
-  constructor() { }
-
   formatAiReponseQuizString(quizString: any) {
     const quizData: any = {
       title: '',

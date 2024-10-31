@@ -7,8 +7,6 @@ export class LoadingService {
 
   isLoading: any = signal(false);
 
-  constructor() { }
-
   /**
    * toggle the isLoading boolean signal
    */
