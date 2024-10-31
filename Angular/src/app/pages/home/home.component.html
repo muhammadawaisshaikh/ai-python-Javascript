@@ -1,0 +1,30 @@
+<div class="container mt-5">
+    <div class="text-center p-5">
+        <h1>Leveraging Angular, Python, and AI (GenAI)</h1>
+        <h2>Practical Solutions & Recipes</h2>
+
+        <img class="mt-5" src="assets/img/tech-stack.png" alt="Technology Stack">
+    </div>
+
+    <hr class="my-4">
+
+    <div class="author-bio">
+        <h4 class="text-uppercase text-black-50 text-center mb-4">About the Authors</h4>
+        <div class="row">
+            @for (author of authors; track $index) {
+                <div class="col-md-4 text-center">
+                    <img [src]="author.image" loading="lazy" alt="{{ author.name }} Image" class="img-rounded">
+                    <h2 class="my-3">{{ author.name }}</h2>
+                    <p>{{ author.description }}</p>
+                    <ul class="author-contact list-unstyled d-flex justify-content-center">
+                        @for (link of author.contactLinks; track $index) {
+                            <li class="px-2">
+                                <a [href]="link.url" target="_blank">{{ link.label }}</a>
+                            </li>
+                        }
+                    </ul>
+                </div>
+            }
+        </div>
+    </div>
+</div>
