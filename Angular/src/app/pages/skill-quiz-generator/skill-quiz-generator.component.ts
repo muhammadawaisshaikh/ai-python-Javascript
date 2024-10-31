@@ -55,9 +55,6 @@ export class SkillQuizGeneratorComponent {
           const formattedResponse = this.quizHelperService.formatAiReponseQuizString(res);
           this.formattedQuizResponse = formattedResponse;
 
-          console.log(this.formattedQuizResponse);
-
-
           this.candidateForm.reset();
           this.loadingService.onLoadingToggle();
         },

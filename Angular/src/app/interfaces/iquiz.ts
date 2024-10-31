@@ -1,5 +1,5 @@
 export interface IQuizQuestion {
-    question: []
+    question: string
 }
 
 export interface IQuiz {
