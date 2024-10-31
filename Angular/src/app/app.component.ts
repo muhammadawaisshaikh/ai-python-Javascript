@@ -14,6 +14,6 @@ export class AppComponent {
   title = 'angular-gemini-recipes';
 
   constructor(
-    public loadingService: LoadingService
+    public readonly loadingService: LoadingService
   ) {}
 }
