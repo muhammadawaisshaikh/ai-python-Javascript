@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { GeminiGoogleAiService } from '../../services/gemini-google-ai/gemini-google-ai.service';
 import { QuizRecipeHelperService } from '../../helpers/quiz-recipe-helper.service';
 import { LoadingService } from '../../services/loading/loading.service';
+import { IQuiz } from '../../interfaces/iquiz';
 
 @Component({
   selector: 'app-skill-quiz-generator',
@@ -15,11 +16,15 @@ import { LoadingService } from '../../services/loading/loading.service';
 export class SkillQuizGeneratorComponent {
   candidateForm!: FormGroup;
   technologies = ['Angular', 'React', 'JavaScript', 'TypeScript', 'Python', 'Java'];
-  formattedQuizResponse: any = null;
+  formattedQuizResponse: IQuiz = {
+    title: '',
+    instructions: '',
+    questions: []
+  };
 
   constructor(
-    private fb: FormBuilder, 
-    private geminiService: GeminiGoogleAiService, 
+    private fb: FormBuilder,
+    private geminiService: GeminiGoogleAiService,
     private quizHelperService: QuizRecipeHelperService,
     private loadingService: LoadingService
   ) {
@@ -46,9 +51,12 @@ export class SkillQuizGeneratorComponent {
       const prompt: string = `Generate a technical skill quiz for a candidate named ${this.candidateForm.value.candidateName} who specializes in ${this.candidateForm.value.technology}. The quiz should be tailored to the candidate's proficiency level, aiming for a balanced mix of ${this.candidateForm.value.questionsLength} questions that assess both foundational knowledge and practical application, just return questions strings`;
 
       this.geminiService.askGemini(prompt).then(
-        (res: any) => {
+        (res: string) => {
           const formattedResponse = this.quizHelperService.formatAiReponseQuizString(res);
           this.formattedQuizResponse = formattedResponse;
+
+          console.log(this.formattedQuizResponse);
+
 
           this.candidateForm.reset();
           this.loadingService.onLoadingToggle();

@@ -1,5 +1,6 @@
 import { Component, Input, SimpleChanges } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { IQuiz } from '../../../interfaces/iquiz';
 
 @Component({
   selector: 'app-generated-quiz',
@@ -9,8 +10,12 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
   styleUrl: './generated-quiz.component.scss'
 })
 export class GeneratedQuizComponent {
-  @Input() quiz: any = {};
-  quizForm: any = FormGroup;
+  @Input() quiz: IQuiz = {
+    title: '',
+    instructions: '',
+    questions: []
+  };
+  quizForm!: FormGroup;
 
   constructor(private fb: FormBuilder) {
     this.initQuizForm();
@@ -41,7 +46,7 @@ export class GeneratedQuizComponent {
   }
 
   hasError(controlIndex: number): boolean {
-    const control = this.quizForm.get('answers').get(`${controlIndex}`);
-    return control?.invalid && (control?.touched || this.quizForm.submitted);
+    const control = this.quizForm.get('answers')?.get(`${controlIndex}`);
+    return !!(control?.invalid || control?.touched);
   }
 }

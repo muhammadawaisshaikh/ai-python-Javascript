@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { IQuiz } from '../interfaces/iquiz';
 
 @Injectable({
   providedIn: 'root'
@@ -6,7 +7,7 @@ import { Injectable } from '@angular/core';
 export class QuizRecipeHelperService {
 
   formatAiReponseQuizString(quizString: any) {
-    const quizData: any = {
+    const quizData: IQuiz = {
       title: '',
       instructions: '',
       questions: []
