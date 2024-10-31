@@ -5,7 +5,7 @@ import { Injectable, Signal, signal } from '@angular/core';
 })
 export class LoadingService {
 
-  isLoading: any = signal(false);
+  isLoading = signal(false);
 
   /**
    * toggle the isLoading boolean signal
