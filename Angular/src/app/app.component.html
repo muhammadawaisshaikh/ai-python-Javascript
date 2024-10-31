@@ -1,3 +1,5 @@
 <div class="container mt-5">
     <router-outlet />
 </div>
+
+<app-loader [isLoading]="loadingService.isLoading()" />

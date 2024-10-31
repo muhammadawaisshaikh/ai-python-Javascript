@@ -3,6 +3,7 @@ import { GeneratedQuizComponent } from './generated-quiz/generated-quiz.componen
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { GeminiGoogleAiService } from '../../services/gemini-google-ai/gemini-google-ai.service';
 import { QuizRecipeHelperService } from '../../helpers/quiz-recipe-helper.service';
+import { LoadingService } from '../../services/loading/loading.service';
 
 @Component({
   selector: 'app-skill-quiz-generator',
@@ -16,7 +17,12 @@ export class SkillQuizGeneratorComponent {
   technologies = ['Angular', 'React', 'JavaScript', 'TypeScript', 'Python', 'Java'];
   formattedQuizResponse: any = null;
 
-  constructor(private fb: FormBuilder, private geminiService: GeminiGoogleAiService, private quizHelperService: QuizRecipeHelperService) {
+  constructor(
+    private fb: FormBuilder, 
+    private geminiService: GeminiGoogleAiService, 
+    private quizHelperService: QuizRecipeHelperService,
+    private loadingService: LoadingService
+  ) {
     this.formInit();
   }
 
@@ -35,7 +41,7 @@ export class SkillQuizGeneratorComponent {
 
   onSubmit() {
     if (this.candidateForm.valid) {
-      console.log('Form Submitted', this.candidateForm.value);
+      this.loadingService.onLoadingToggle();
 
       const prompt: string = `Generate a technical skill quiz for a candidate named ${this.candidateForm.value.candidateName} who specializes in ${this.candidateForm.value.technology}. The quiz should be tailored to the candidate's proficiency level, aiming for a balanced mix of ${this.candidateForm.value.questionsLength} questions that assess both foundational knowledge and practical application, just return questions strings`;
 
@@ -43,11 +49,13 @@ export class SkillQuizGeneratorComponent {
         (res: any) => {
           const formattedResponse = this.quizHelperService.formatAiReponseQuizString(res);
           this.formattedQuizResponse = formattedResponse;
+          this.loadingService.onLoadingToggle();
         },
         (error: Error) => {
           console.error(error);
+          this.loadingService.onLoadingToggle();
         }
-      )
+      );
     } else {
       console.log('Form is invalid');
     }
