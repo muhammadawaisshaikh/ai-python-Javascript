@@ -17,7 +17,7 @@
             <select id="technology" class="form-select" formControlName="technology" required>
                 <option value="">Select a Technology</option>
                 @for (tech of technologies; track $index) {
-                <option [value]="tech">{{ tech }}</option>
+                    <option [value]="tech">{{ tech }}</option>
                 }
             </select>
 
@@ -47,5 +47,9 @@
 
 <div class="mt-5">
     <h2 class="mb-4 pb-4 border-bottom">Ai Generated Quiz</h2>
-    <app-generated-quiz />
+    @if (formattedQuizResponse) {
+        <app-generated-quiz [quiz]="formattedQuizResponse" />
+    } @else {
+        <p>Quiz isn't generated yet.</p>
+    }
 </div>

@@ -1,1 +1,30 @@
-<p>generated-quiz works!</p>
+<div class="container mt-5">
+    <h1 class="text-center">{{ quiz.title }}</h1>
+    <p class="lead text-center">{{ quiz.instructions }}</p>
+
+    <form [formGroup]="quizForm" (ngSubmit)="onSubmit()">
+        <div formArrayName="answers">
+            @for (question of quiz.questions; track $index; let i = $index) {
+            <div class="card mb-3">
+                <div class="card-body">
+                    <h5 class="card-title" [innerHTML]="question.question"></h5>
+                    <div class="form-group">
+                        <label for="answer-{{ i }}">Your Answer:</label>
+                        <textarea id="answer-{{ i }}" class="form-control" rows="4" formControlName="{{i}}"
+                            required></textarea>
+                        @if (hasError(i)) {
+                            <div class="text-danger">
+                                Answer is required.
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+            }
+        </div>
+
+        <div class="text-center mt-4">
+            <button type="submit" class="btn btn-primary">Submit Answers</button>
+        </div>
+    </form>
+</div>
