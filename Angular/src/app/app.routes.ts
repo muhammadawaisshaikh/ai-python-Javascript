@@ -18,4 +18,9 @@ export const routes: Routes = [
     loadComponent: () =>
       import('./pages/chat/chat.component').then((c) => c.ChatComponent),
   },
+  {
+    path: 'skill-quiz-generator',
+    loadComponent: () =>
+      import('./pages/skill-quiz-generator/skill-quiz-generator.component').then(c => c.SkillQuizGeneratorComponent)
+  }
 ];
