@@ -9,9 +9,7 @@ export const routes: Routes = [
   {
     path: 'home',
     loadComponent: () =>
-      import('./pages/home/home.component').then(
-        (c) => c.HomeComponent,
-      ),
+      import('./pages/home/home.component').then((c) => c.HomeComponent),
   },
   {
     path: 'starter',
@@ -28,6 +26,15 @@ export const routes: Routes = [
   {
     path: 'skill-quiz-generator',
     loadComponent: () =>
-      import('./pages/skill-quiz-generator/skill-quiz-generator.component').then(c => c.SkillQuizGeneratorComponent)
-  }
+      import(
+        './pages/skill-quiz-generator/skill-quiz-generator.component'
+      ).then((c) => c.SkillQuizGeneratorComponent),
+  },
+  {
+    path: 'sentiment-analyzer',
+    loadComponent: () =>
+      import('./pages/sentiment-analyzer/sentiment-analyzer.component').then(
+        (c) => c.SentimentAnalyzerComponent,
+      ),
+  },
 ];

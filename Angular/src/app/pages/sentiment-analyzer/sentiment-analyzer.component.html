@@ -1,0 +1,38 @@
+<div class="chat-container">
+  <div class="messages">
+    @for (msg of messages; track msg) {
+      @if (msg.isUser) {
+        <div [ngClass]="msg.isUser ? 'user-message' : 'bot-message'">
+          {{ msg.text }}
+        </div>
+      } @else {
+        @if (msg.error) {
+          <div class="bot-message negative">
+            {{ msg.error }}
+          </div>
+        } @else {
+          <div
+            class="bot-message"
+            [class]="getSentimentClass(msg.response?.documentSentiment?.score)"
+          >
+            Score: {{ msg.response?.documentSentiment?.score }}<br />
+            Magnitude: {{ msg.response?.documentSentiment?.magnitude }}
+          </div>
+        }
+      }
+    }
+
+    @if (isLoading) {
+      <div class="loader"></div>
+    }
+    <form (submit)="onSubmit()" class="input-form">
+      <textarea
+        rows="1"
+        placeholder="Enter text to analyze..."
+        [(ngModel)]="userInput"
+        (keyup.enter)="onSubmit()"
+        name="chatInput"
+      ></textarea>
+    </form>
+  </div>
+</div>

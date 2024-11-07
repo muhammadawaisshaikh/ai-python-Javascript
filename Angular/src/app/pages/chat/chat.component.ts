@@ -3,7 +3,6 @@ import { FormsModule } from '@angular/forms';
 
 import { CommonModule } from '@angular/common';
 import { GeminiGoogleAiService } from '../../services/gemini-google-ai/gemini-google-ai.service';
-import { HttpClientModule } from '@angular/common/http';
 
 @Component({
   selector: 'app-chat',
@@ -29,7 +28,6 @@ export class ChatComponent {
     const userMessage = this.userInput;
     this.userInput = '';
 
-    // TODO: Handle errors
     try {
       const response = await this.#geminiService.askGemini(userMessage);
       this.messages.push({ text: response, isUser: false });
