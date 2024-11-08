@@ -12,6 +12,13 @@ export const routes: Routes = [
       import('./pages/home/home.component').then((c) => c.HomeComponent),
   },
   {
+    path: 'recipes-listing',
+    loadComponent: () =>
+      import('./pages/recipes-listing/recipes-listing.component').then(
+        (c) => c.RecipesListingComponent,
+      ),
+  },
+  {
     path: 'starter',
     loadComponent: () =>
       import('./components/text-based-gemini/text-based-gemini.component').then(
@@ -35,6 +42,13 @@ export const routes: Routes = [
     loadComponent: () =>
       import('./pages/sentiment-analyzer/sentiment-analyzer.component').then(
         (c) => c.SentimentAnalyzerComponent,
+      ),
+  },
+  {
+    path: 'recognize-plant',
+    loadComponent: () =>
+      import('./pages/recognise-plant-ai/recognise-plant-ai.component').then(
+        (c) => c.RecognisePlantAiComponent,
       ),
   },
 ];

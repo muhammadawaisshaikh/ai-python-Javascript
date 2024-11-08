@@ -1,0 +1,18 @@
+<div class="my-5">
+    <h1 class="mb-5">All Actionable Recipes</h1>
+    <div class="row">
+        @for (recipe of recipes; track $index) {
+            <div class="col-md-4 col-12 mt-4">
+                <div class="card">
+                    <img src="{{ recipe.img }}" class="card-img-top" alt="Card image">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ recipe.title }}</h5>
+                        <p class="card-text">{{ recipe.desc }}</p>
+                        <a href="{{ recipe.url }}" class="btn btn-primary me-3">Demo</a>
+                        <a href="{{ recipe.github }}" class="btn btn-dark" target="_blank">View GitHub</a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
