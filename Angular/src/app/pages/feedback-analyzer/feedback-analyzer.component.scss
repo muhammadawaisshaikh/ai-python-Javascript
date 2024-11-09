@@ -1,8 +1,6 @@
 .feedback-analyzer {
   display: flex;
   flex-direction: column;
-  max-width: 600px;
-  margin: 0 auto;
 }
 
 textarea {
@@ -10,13 +8,4 @@ textarea {
   height: 100px;
   margin-top: 10px;
   padding: 10px;
-}
-
-button {
-  margin-top: 10px;
-  padding: 10px 20px;
-  background-color: #007bff;
-  color: #fff;
-  border: none;
-  cursor: pointer;
 }

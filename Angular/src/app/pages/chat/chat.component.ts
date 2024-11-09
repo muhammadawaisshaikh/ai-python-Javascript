@@ -3,6 +3,7 @@ import { FormsModule } from '@angular/forms';
 
 import { CommonModule } from '@angular/common';
 import { GeminiGoogleAiService } from '../../services/gemini-google-ai/gemini-google-ai.service';
+import { LoadingService } from '../../services/loading/loading.service';
 
 @Component({
   selector: 'app-chat',
@@ -14,14 +15,14 @@ import { GeminiGoogleAiService } from '../../services/gemini-google-ai/gemini-go
 export class ChatComponent {
   messages: { text: string; isUser: boolean }[] = [];
   userInput: string = '';
-  isLoading: boolean = false;
 
   readonly #geminiService = inject(GeminiGoogleAiService);
+  readonly loadingService: LoadingService = inject(LoadingService);
 
   async onSubmit() {
     if (!this.userInput.trim()) return;
 
-    this.isLoading = true;
+    this.loadingService.onLoadingToggle();
 
     this.messages.push({ text: this.userInput, isUser: true });
 
@@ -39,6 +40,6 @@ export class ChatComponent {
       console.error(err);
     }
 
-    this.isLoading = false;
+    this.loadingService.onLoadingToggle();
   }
 }

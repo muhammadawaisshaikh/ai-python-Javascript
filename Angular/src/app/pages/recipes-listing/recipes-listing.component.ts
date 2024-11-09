@@ -53,7 +53,7 @@ export class RecipesListingComponent {
     {
       title: 'Feedback Analyzer',
       img: 'assets/img/plat-identifier-using-ai.png',
-      desc: 'The feedback analyzer assesses sentiment in both images and text to capture emotional tone and key visual features.',
+      desc: 'AI-Powered analyzer to assesse sentiment in images and text.',
       url: '/feedback-analyzer',
       github:
         'https://github.com/muhammadawaisshaikh/ai-python-Javascript/tree/main/Angular/src/app/pages/recognize-plant',
