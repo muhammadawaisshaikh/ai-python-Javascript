@@ -1,0 +1,41 @@
+<div class="feedback-analyzer container">
+  <h2 class="mb-4 pb-4 border-bottom">Product Feedback Analyzer</h2>
+
+  <!-- Image upload input -->
+  <input
+    type="file"
+    (change)="onFileChange($event)"
+    accept="image/*"
+    class="form-control"
+  />
+
+  <!-- Text Review Input -->
+  <textarea
+    class="form-control"
+    [(ngModel)]="textReview"
+    placeholder="Enter your feedback"
+  ></textarea>
+
+  <button
+    (click)="analyzeFeedback()"
+    [disabled]="!imageFile || !textReview"
+    class="btn btn-primary"
+  >
+    Analyze Feedback
+  </button>
+
+  <!-- Display Analysis Result -->
+  @if (result) {
+    <div>
+      <h3>Analysis Results</h3>
+      <p>Image Sentiment Score: {{ result.imageSentiment.score }}</p>
+      <p>Text Sentiment Score: {{ result.textSentiment.score }}</p>
+      <h4>Detected Features</h4>
+      <ul>
+        @for (feature of result.detectedFeatures; track feature) {
+          <li>{{ feature }}</li>
+        }
+      </ul>
+    </div>
+  }
+</div>
