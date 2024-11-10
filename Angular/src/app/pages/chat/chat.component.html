@@ -1,21 +1,25 @@
 <div class="chat-container">
-  <div class="messages">
-    <div
-      *ngFor="let msg of messages"
-      [ngClass]="msg.isUser ? 'user-message' : 'bot-message'"
-    >
-      {{ msg.text }}
+  <h2 class="mb-4 pb-4 border-bottom">Chat Application</h2>
+  <div class="messages row">
+    <div class="mb-3 col-md-4 col-12">
+      <div
+        *ngFor="let msg of messages"
+        [ngClass]="msg.isUser ? 'user-message' : 'bot-message'"
+      >
+        {{ msg.text }}
+      </div>
+
+      <form (submit)="onSubmit()" class="input-form">
+        <input
+          class="form-control"
+          type="text"
+          [(ngModel)]="userInput"
+          (keyup.enter)="onSubmit()"
+          placeholder="Type your message here..."
+          name="chatInput"
+          required
+        />
+      </form>
     </div>
-    <div *ngIf="isLoading" class="loader"></div>
   </div>
-  <form (submit)="onSubmit()" class="input-form">
-    <input
-      type="text"
-      [(ngModel)]="userInput"
-      (keyup.enter)="onSubmit()"
-      placeholder="Type your message here..."
-      name="chatInput"
-      required
-    />
-  </form>
 </div>

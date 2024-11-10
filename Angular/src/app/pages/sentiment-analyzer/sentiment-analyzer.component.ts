@@ -4,6 +4,7 @@ import { GeminiGoogleSentimentAiService } from '../../services/gemini-google-ai/
 import { FormsModule } from '@angular/forms';
 import { catchError, EMPTY, take } from 'rxjs';
 import { CommonModule } from '@angular/common';
+import { LoadingService } from '../../services/loading/loading.service';
 
 @Component({
   standalone: true,
@@ -21,16 +22,17 @@ export class SentimentAnalyzerComponent {
   }[] = [];
 
   userInput: string = '';
-  isLoading: boolean = false;
 
   readonly #sentimentService: GeminiGoogleSentimentAiService = inject(
     GeminiGoogleSentimentAiService,
   );
 
+  readonly loadingService: LoadingService = inject(LoadingService);
+
   onSubmit(): void {
     if (!this.userInput.trim()) return;
 
-    this.isLoading = true;
+    this.loadingService.onLoadingToggle();
 
     this.messages.push({ text: this.userInput, isUser: true });
 
@@ -41,7 +43,7 @@ export class SentimentAnalyzerComponent {
       .generateSentimentAnalysis(userMessage)
       .pipe(
         catchError((err) => {
-          this.isLoading = false;
+          this.loadingService.onLoadingToggle();
           this.messages.push({
             error:
               'Failed to analyze sentiment. Please ensure that you have added your API key and try again.',
@@ -52,7 +54,7 @@ export class SentimentAnalyzerComponent {
         take(1),
       )
       .subscribe((response) => {
-        this.isLoading = false;
+        this.loadingService.onLoadingToggle();
         this.messages.push({ response: response, isUser: false });
       });
   }

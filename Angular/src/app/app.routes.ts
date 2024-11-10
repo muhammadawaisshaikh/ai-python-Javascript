@@ -51,4 +51,11 @@ export const routes: Routes = [
         (c) => c.RecognisePlantAiComponent,
       ),
   },
+  {
+    path: 'feedback-analyzer',
+    loadComponent: () =>
+      import('./pages/feedback-analyzer/feedback-analyzer.component').then(
+        (c) => c.FeedbackAnalyzerComponent,
+      ),
+  },
 ];
