@@ -1,5 +1,6 @@
 export const environment = {
   production: false,
-  googleAiKey: '',
-  sentimentKey: ''
+  googleAiKey: 'AIzaSyDod4EL4wTTivmHxCGJXboauiJXLUi2DvQ',
+  sentimentKey: '',
+  visionKey: '',
 };
