@@ -1,6 +1,4 @@
 import { Component, inject } from '@angular/core';
-import { GeminiResponse } from '../../model/gemini-response.model';
-import { GoogleGeminiVisionAiService } from '../../services/gemini-google-ai/gemini-google-vision-ai.service';
 import { FormsModule } from '@angular/forms';
 import { GeminiGoogleAiService } from '../../services/gemini-google-ai/gemini-google-ai.service';
 import { ImageHelperService } from '../../helpers/image-helper.service';
