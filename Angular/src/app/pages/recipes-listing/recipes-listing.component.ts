@@ -48,7 +48,7 @@ export class RecipesListingComponent {
       desc: 'AI-Powered Plant Identification Tool for Instant Recognition and Information.',
       url: '/recognize-plant',
       github:
-        'https://github.com/muhammadawaisshaikh/ai-python-Javascript/tree/main/Angular/src/app/pages/recognize-plant',
+        'https://github.com/muhammadawaisshaikh/ai-python-Javascript/tree/main/Angular/src/app/pages/recognise-plant-ai',
     },
     {
       title: 'Feedback Analyzer',
@@ -57,6 +57,14 @@ export class RecipesListingComponent {
       url: '/feedback-analyzer',
       github:
         'https://github.com/muhammadawaisshaikh/ai-python-Javascript/tree/main/Angular/src/app/pages/recognize-plant',
+    },
+    {
+      title: 'Health Report Analysis',
+      img: 'assets/img/health-report-ai.png',
+      desc: 'AI-Powered analysis to your health or laboratory reports like CBC, CRP, CP and many more',
+      url: '/health-report-ai',
+      github:
+        'https://github.com/muhammadawaisshaikh/ai-python-Javascript/tree/main/Angular/src/app/pages/heath-report-ai',
     },
   ];
 }

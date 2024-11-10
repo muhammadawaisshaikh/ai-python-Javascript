@@ -58,4 +58,11 @@ export const routes: Routes = [
         (c) => c.FeedbackAnalyzerComponent,
       ),
   },
+  {
+    path: 'health-report-ai',
+    loadComponent: () =>
+      import('./pages/heath-report-ai/heath-report-ai.component').then(
+        (c) => c.HeathReportAiComponent,
+      ),
+  },
 ];

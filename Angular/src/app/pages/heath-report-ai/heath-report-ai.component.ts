@@ -6,13 +6,13 @@ import { IVisionAi } from '../../interfaces/image-ai';
 import { LoadingService } from '../../services/loading/loading.service';
 
 @Component({
-  selector: 'app-recognise-plant-ai',
+  selector: 'app-heath-report-ai',
   standalone: true,
   imports: [FormsModule],
-  templateUrl: './recognise-plant-ai.component.html',
-  styleUrl: './recognise-plant-ai.component.scss'
+  templateUrl: './heath-report-ai.component.html',
+  styleUrl: './heath-report-ai.component.scss'
 })
-export class RecognisePlantAiComponent {
+export class HeathReportAiComponent {
   image: string = '';
   inlineImageData: IVisionAi = {};
   imageFile: File | null = null;
@@ -45,10 +45,10 @@ export class RecognisePlantAiComponent {
     }
   }
 
-  onPlantIdentify() {
+  onHealthReportAnalysis() {
     this.loadingService.onLoadingToggle();
 
-    this.geminiAiService.onImagePrompt('Which type of plant is this share the details and if the plant seems in issue please highlights the steps to fix and make plant sustainable.', this.inlineImageData)
+    this.geminiAiService.onImagePrompt('Analysethe provided health report of a patient and give feedback on the disease and some first aid treatment and also provide the best hospital to consult with doctor category to consult.', this.inlineImageData)
       .then((response) => {
         this.result = response;
         this.loadingService.onLoadingToggle();
