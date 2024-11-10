@@ -22,4 +22,26 @@ export class GeminiGoogleAiService {
     const content = await model.generateContent(prompt);
     return content.response.text();
   }
+
+   /**
+   * Communicate with Gemini - Google Ai using image prompt
+   */
+   async onImagePrompt(prompt: string, imageinlineData: any): Promise<any> {
+    try {
+      const model: GenerativeModel = this.#genAI.getGenerativeModel({
+        model: 'gemini-1.5-flash',
+      });
+  
+      const result = await model.generateContent([prompt, imageinlineData]);
+  
+      if (!result || !result.response) {
+        throw new Error('Failed to get a valid response from the model');
+      }
+  
+      return result.response.text();
+    } catch (error) {
+      console.error('Error generating content:', error);
+      throw new Error('Failed to generate content with Gemini - Google AI.');
+    }
+  }
 }

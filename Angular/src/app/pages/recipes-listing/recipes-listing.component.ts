@@ -52,7 +52,7 @@ export class RecipesListingComponent {
     },
     {
       title: 'Feedback Analyzer',
-      img: 'assets/img/plat-identifier-using-ai.png',
+      img: 'assets/img/ai-powered-feedback-analysis.png',
       desc: 'AI-Powered analyzer to assesse sentiment in images and text.',
       url: '/feedback-analyzer',
       github:
