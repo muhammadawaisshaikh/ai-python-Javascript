@@ -6,7 +6,7 @@ To do sentiment analysis by using python, we will use twitter datasets from Kagg
 ![Visualise the Dataset](<./demo/wordcloud.png>)
 
 # Setup Libraries
-pip3 install pandas
+pip install pandas matplotlib wordcloud re textblob 
 
 ## Dataset (Sentiment140 dataset with 1.6 million tweets)
 kaggle.com/datasets/kazanova/sentiment140
