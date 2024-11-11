@@ -52,7 +52,7 @@ export class RecipesListingComponent {
     },
     {
       title: 'Mood Detector',
-      img: 'assets/img/ai-powered-feedback-analysis.png',
+      img: 'assets/img/ai-powered-mood-detector.png',
       desc: 'AI-Powered detector to analyze the mood from an image.',
       url: '/mood-detector',
       github:
