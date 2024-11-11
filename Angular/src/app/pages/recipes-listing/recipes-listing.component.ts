@@ -51,10 +51,10 @@ export class RecipesListingComponent {
         'https://github.com/muhammadawaisshaikh/ai-python-Javascript/tree/main/Angular/src/app/pages/recognise-plant-ai',
     },
     {
-      title: 'Feedback Analyzer',
+      title: 'Mood Detector',
       img: 'assets/img/ai-powered-feedback-analysis.png',
-      desc: 'AI-Powered analyzer to assesse sentiment in images and text.',
-      url: '/feedback-analyzer',
+      desc: 'AI-Powered detector to analyze the mood from an image.',
+      url: '/mood-detector',
       github:
         'https://github.com/muhammadawaisshaikh/ai-python-Javascript/tree/main/Angular/src/app/pages/recognize-plant',
     },

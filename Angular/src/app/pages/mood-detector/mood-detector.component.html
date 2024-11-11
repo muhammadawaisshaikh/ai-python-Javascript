@@ -1,0 +1,59 @@
+<div class="feedback-analyzer container">
+  <h2 class="mb-4 pb-4 border-bottom">Mood Detector</h2>
+  <div class="row">
+    <div class="mb-3 col-md-4 col-12">
+      @if (imageAsBase64) {
+        <img [src]="imageAsBase64" class="w-100 mb-5 d-block m-auto" />
+      }
+
+      <!-- Image upload input -->
+      <input
+        type="file"
+        (change)="onFileChange($event)"
+        accept="image/*"
+        class="form-control"
+      />
+
+      <button
+        (click)="detectMood()"
+        class="btn btn-primary mt-2"
+        [disabled]="!imageAsBase64"
+      >
+        Detect mood
+      </button>
+
+      @if (result) {
+        <div>
+          <h3>Mood Analysis</h3>
+          <ul>
+            <li [ngClass]="getMoodLabel(result.joyLikelihood) | lowercase">
+              Joy: {{ getMoodLabel(result.joyLikelihood) }}
+            </li>
+            <li [ngClass]="getMoodLabel(result.sorrowLikelihood) | lowercase">
+              Sorrow: {{ getMoodLabel(result.sorrowLikelihood) }}
+            </li>
+            <li [ngClass]="getMoodLabel(result.angerLikelihood) | lowercase">
+              Anger: {{ getMoodLabel(result.angerLikelihood) }}
+            </li>
+            <li [ngClass]="getMoodLabel(result.surpriseLikelihood) | lowercase">
+              Surprise: {{ getMoodLabel(result.surpriseLikelihood) }}
+            </li>
+            <li
+              [ngClass]="
+                getMoodLabel(result.underExposedLikelihood) | lowercase
+              "
+            >
+              Underexposed: {{ getMoodLabel(result.underExposedLikelihood) }}
+            </li>
+            <li [ngClass]="getMoodLabel(result.blurredLikelihood) | lowercase">
+              Blurred: {{ getMoodLabel(result.blurredLikelihood) }}
+            </li>
+            <li [ngClass]="getMoodLabel(result.headwearLikelihood) | lowercase">
+              Headwear: {{ getMoodLabel(result.headwearLikelihood) }}
+            </li>
+          </ul>
+        </div>
+      }
+    </div>
+  </div>
+</div>

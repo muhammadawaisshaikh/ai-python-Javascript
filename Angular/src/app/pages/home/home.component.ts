@@ -6,7 +6,7 @@ import { RouterLink } from '@angular/router';
   standalone: true,
   imports: [RouterLink],
   templateUrl: './home.component.html',
-  styleUrl: './home.component.scss'
+  styleUrl: './home.component.scss',
 })
 export class HomeComponent {
   authors = [
@@ -19,10 +19,13 @@ export class HomeComponent {
                     and contributed as a tech author to Genenerative Ai and JavaScript in Plain English. Die hard supporter of #opensource`,
       contactLinks: [
         { label: 'LinkTree', url: 'https://linktr.ee/mawaisshaikh' },
-        { label: 'LinkedIn', url: 'https://www.linkedin.com/in/muhammadawaisshaikh' },
+        {
+          label: 'LinkedIn',
+          url: 'https://www.linkedin.com/in/muhammadawaisshaikh',
+        },
         { label: 'Website', url: 'https://bit.ly/muhammadawaisshaikh' },
-        { label: 'Twitter', url: 'https://www.twitter.com/developerorium' }
-      ]
+        { label: 'Twitter', url: 'https://www.twitter.com/developerorium' },
+      ],
     },
     {
       name: 'Lars Gyrup Brink Nielsen',
@@ -39,22 +42,23 @@ export class HomeComponent {
       contactLinks: [
         { label: 'LinkedIn', url: 'https://www.linkedin.com/in/larsgbn/' },
         { label: 'Github', url: 'https://github.com/LayZeeDK' },
-        { label: 'Twitter', url: 'https://twitter.com/layzeedk' }
-      ]
+        { label: 'Twitter', url: 'https://twitter.com/layzeedk' },
+      ],
     },
     {
       name: 'Sonu Kapoor',
       image: 'assets/img/sonu-co-author.jpg',
-      description: `I am a seasoned Senior Developer/Architect boasting an extensive career spanning over two decades. 
-                    With more than 15 years of expertise in web applications and a decade dedicated to .NET, my commitment to excellence 
-                    has been recognized through the prestigious Microsoft Most Valuable Professional award for my invaluable contributions 
-                    to the ASP.NET community. I hold the esteemed title of a recognized rMVP and have left my mark on the Angular repository, 
-                    having been personally invited by Google to serve as an Angular Trusted Contributor.`,
+      description: `I am a seasoned Senior Developer/Architect with an extensive career spanning over two decades. With more than 15 years 
+      of expertise in web applications and a decade dedicated to .NET, my commitment to excellence has been consistently recognized through 
+      prestigious awards. Recently, I received the Microsoft Most Valuable Professional (MVP) award in Developer Technologies, acknowledging
+      my invaluable contributions to the development community. I am also honored to be a Google Developer Expert (GDE) in Angular, reflecting
+      my deep knowledge and impactful contributions to the Angular ecosystem. Additionally, I hold the esteemed title of a recognized rMVP
+      and have left my mark on the Angular repository, having been personally invited by Google to serve as an Angular Trusted Contributor.`,
       contactLinks: [
         { label: 'LinkedIn', url: 'https://www.linkedin.com/in/sonu-kapoor/' },
         { label: 'Github', url: 'https://github.com/sonukapoor' },
-        { label: 'Twitter', url: 'https://twitter.com/SonuKapoor1978' }
-      ]
-    }
+        { label: 'Twitter', url: 'https://twitter.com/SonuKapoor1978' },
+      ],
+    },
   ];
 }
