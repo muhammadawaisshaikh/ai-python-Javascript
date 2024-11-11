@@ -52,10 +52,10 @@ export const routes: Routes = [
       ),
   },
   {
-    path: 'feedback-analyzer',
+    path: 'mood-detector',
     loadComponent: () =>
-      import('./pages/feedback-analyzer/feedback-analyzer.component').then(
-        (c) => c.FeedbackAnalyzerComponent,
+      import('./pages/mood-detector/mood-detector.component').then(
+        (c) => c.MoodDetectorComponent,
       ),
   },
   {
