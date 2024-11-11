@@ -66,5 +66,21 @@ export class RecipesListingComponent {
       github:
         'https://github.com/muhammadawaisshaikh/ai-python-Javascript/tree/main/Angular/src/app/pages/heath-report-ai',
     },
+    {
+      title: 'Sentiment Analysis Python',
+      img: 'assets/img/sentiment-analysis-python-kaggle.png',
+      desc: 'AI-Powered Sentiment Analysis on Product Ratings available on Twitter Dataset available on Kaggle.',
+      url: 'https://github.com/muhammadawaisshaikh/ai-python-Javascript/blob/main/Python/sentiment-analysis-python-kaggle/demo/wordcloud.png',
+      github:
+        'https://github.com/muhammadawaisshaikh/ai-python-Javascript/tree/main/Python/sentiment-analysis-python-kaggle',
+    },
+    {
+      title: 'Ai Powered REST Api - Flask',
+      img: 'assets/img/ai-powered-api-python-flask.png',
+      desc: 'AI-powered REST API using Flask, integrated with Google AI Gemini.',
+      url: 'https://github.com/muhammadawaisshaikh/ai-python-Javascript/blob/main/Python/genAi-gemini-api/README.md',
+      github:
+        'https://github.com/muhammadawaisshaikh/ai-python-Javascript/tree/main/Python/genAi-gemini-api',
+    },
   ];
 }
