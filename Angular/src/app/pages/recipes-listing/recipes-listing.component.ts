@@ -4,9 +4,7 @@ import { IRecipe } from '../../interfaces/recipe';
 @Component({
   selector: 'app-recipes-listing',
   standalone: true,
-  imports: [],
   templateUrl: './recipes-listing.component.html',
-  styleUrl: './recipes-listing.component.scss',
 })
 export class RecipesListingComponent {
   recipes: IRecipe[] = [

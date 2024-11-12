@@ -10,7 +10,6 @@ import { LoadingService } from '../../services/loading/loading.service';
   standalone: true,
   imports: [FormsModule],
   templateUrl: './heath-report-ai.component.html',
-  styleUrl: './heath-report-ai.component.scss'
 })
 export class HeathReportAiComponent {
   image: string = '';
@@ -18,9 +17,11 @@ export class HeathReportAiComponent {
   imageFile: File | null = null;
   result: any | null = null;
 
-  private geminiAiService = inject(GeminiGoogleAiService);
-  private imageHelper = inject(ImageHelperService);
-  private loadingService = inject(LoadingService);
+  readonly #geminiAiService: GeminiGoogleAiService = inject(
+    GeminiGoogleAiService,
+  );
+  readonly #imageHelper: ImageHelperService = inject(ImageHelperService);
+  readonly #loadingService: LoadingService = inject(LoadingService);
 
   onFileChange(e: Event) {
     const input = e.target as HTMLInputElement;
@@ -29,30 +30,34 @@ export class HeathReportAiComponent {
       const file = input.files[0];
 
       // Getting base64 from file to render in DOM
-      this.imageHelper.getBase64(file)
+      this.#imageHelper
+        .getBase64(file)
         .then((result: any) => {
-          this.image = result
+          this.image = result;
         })
-        .catch(e => console.log(e));
+        .catch((e) => console.log(e));
 
       // Generating content model for Gemini Google AI
-      this.imageHelper.fileToGenerativePart(file)
-        .then((image: IVisionAi) => {
-          this.inlineImageData = image;
-        });
+      this.#imageHelper.fileToGenerativePart(file).then((image: IVisionAi) => {
+        this.inlineImageData = image;
+      });
     } else {
-      console.log("No file selected.");
+      console.log('No file selected.');
     }
   }
 
   onHealthReportAnalysis() {
-    this.loadingService.onLoadingToggle();
+    this.#loadingService.onLoadingToggle();
 
-    this.geminiAiService.onImagePrompt('Analysethe provided health report of a patient and give feedback on the disease and some first aid treatment and also provide the best hospital to consult with doctor category to consult.', this.inlineImageData)
+    this.#geminiAiService
+      .onImagePrompt(
+        'Analyse the provided health report of a patient and give feedback on the disease and some first aid treatment and also provide the best hospital to consult with doctor category to consult.',
+        this.inlineImageData,
+      )
       .then((response) => {
         this.result = response;
-        this.loadingService.onLoadingToggle();
+        this.#loadingService.onLoadingToggle();
       })
-      .catch(e => console.log(e));
+      .catch((e) => console.log(e));
   }
 }
