@@ -10,7 +10,6 @@ import { LoadingService } from '../../services/loading/loading.service';
   standalone: true,
   imports: [FormsModule],
   templateUrl: './recognise-plant-ai.component.html',
-  styleUrl: './recognise-plant-ai.component.scss'
 })
 export class RecognisePlantAiComponent {
   image: string = '';
@@ -18,9 +17,11 @@ export class RecognisePlantAiComponent {
   imageFile: File | null = null;
   result: any | null = null;
 
-  private geminiAiService = inject(GeminiGoogleAiService);
-  private imageHelper = inject(ImageHelperService);
-  private loadingService = inject(LoadingService);
+  readonly #geminiAiService: GeminiGoogleAiService = inject(
+    GeminiGoogleAiService,
+  );
+  readonly #imageHelper: ImageHelperService = inject(ImageHelperService);
+  readonly #loadingService: LoadingService = inject(LoadingService);
 
   onFileChange(e: Event) {
     const input = e.target as HTMLInputElement;
@@ -29,30 +30,34 @@ export class RecognisePlantAiComponent {
       const file = input.files[0];
 
       // Getting base64 from file to render in DOM
-      this.imageHelper.getBase64(file)
+      this.#imageHelper
+        .getBase64(file)
         .then((result: any) => {
-          this.image = result
+          this.image = result;
         })
-        .catch(e => console.log(e));
+        .catch((e) => console.log(e));
 
       // Generating content model for Gemini Google AI
-      this.imageHelper.fileToGenerativePart(file)
-        .then((image: IVisionAi) => {
-          this.inlineImageData = image;
-        });
+      this.#imageHelper.fileToGenerativePart(file).then((image: IVisionAi) => {
+        this.inlineImageData = image;
+      });
     } else {
-      console.log("No file selected.");
+      console.log('No file selected.');
     }
   }
 
   onPlantIdentify() {
-    this.loadingService.onLoadingToggle();
+    this.#loadingService.onLoadingToggle();
 
-    this.geminiAiService.onImagePrompt('Which type of plant is this share the details and if the plant seems in issue please highlights the steps to fix and make plant sustainable.', this.inlineImageData)
+    this.#geminiAiService
+      .onImagePrompt(
+        'Which type of plant is this share the details and if the plant seems in issue please highlights the steps to fix and make plant sustainable.',
+        this.inlineImageData,
+      )
       .then((response) => {
         this.result = response;
-        this.loadingService.onLoadingToggle();
+        this.#loadingService.onLoadingToggle();
       })
-      .catch(e => console.log(e));
+      .catch((e) => console.log(e));
   }
 }

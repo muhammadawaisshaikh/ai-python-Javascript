@@ -1,12 +1,16 @@
-import { Component, OnInit, signal } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  OnInit,
+  signal,
+} from '@angular/core';
 import { GeminiGoogleAiService } from '../../services/gemini-google-ai/gemini-google-ai.service';
 
 @Component({
   selector: 'app-text-based-gemini',
   standalone: true,
-  imports: [],
   templateUrl: './text-based-gemini.component.html',
-  styleUrl: './text-based-gemini.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TextBasedGeminiComponent implements OnInit {
   response = signal('');

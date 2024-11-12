@@ -20,8 +20,10 @@ export class MoodDetectorComponent {
   result: FaceAnnotation | null = null;
   inlineImageData: IVisionAi = {};
 
-  private geminiService = inject(GoogleGeminiVisionAiService);
-  private imageHelper = inject(ImageHelperService);
+  readonly #geminiService: GoogleGeminiVisionAiService = inject(
+    GoogleGeminiVisionAiService,
+  );
+  readonly #imageHelper: ImageHelperService = inject(ImageHelperService);
 
   onFileChange(event: any) {
     const input = event.target as HTMLInputElement;
@@ -30,7 +32,7 @@ export class MoodDetectorComponent {
       const file = input.files[0];
 
       // Getting base64 from file to render in DOM
-      this.imageHelper
+      this.#imageHelper
         .getBase64(file)
         .then((result: any) => {
           this.imageAsBase64 = result;
@@ -38,7 +40,7 @@ export class MoodDetectorComponent {
         .catch((e) => console.log(e));
 
       // Generating content model for Gemini Google AI
-      this.imageHelper.fileToGenerativePart(file).then((image: IVisionAi) => {
+      this.#imageHelper.fileToGenerativePart(file).then((image: IVisionAi) => {
         this.inlineImageData = image;
       });
     } else {
@@ -48,7 +50,7 @@ export class MoodDetectorComponent {
 
   detectMood() {
     if (this.imageAsBase64) {
-      this.geminiService
+      this.#geminiService
         .detectMood(this.imageAsBase64)
         .pipe(take(1))
         .subscribe((response) => {

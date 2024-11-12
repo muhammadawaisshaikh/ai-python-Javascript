@@ -8,8 +8,8 @@ import { FaceAnnotationResponse } from '../../model/face-annotation-response.mod
   providedIn: 'root',
 })
 export class GoogleGeminiVisionAiService {
-  private httpClient = inject(HttpClient);
-  private readonly geminiApiUrl = `https://vision.googleapis.com/v1/images:annotate?key=${environment.visionKey}`;
+  readonly #httpClient = inject(HttpClient);
+  readonly #geminiApiUrl = `https://vision.googleapis.com/v1/images:annotate?key=${environment.visionKey}`;
 
   detectMood(imageAsBase64: string): Observable<FaceAnnotationResponse> {
     const body = {
@@ -28,8 +28,8 @@ export class GoogleGeminiVisionAiService {
       ],
     };
 
-    return this.httpClient.post<FaceAnnotationResponse>(
-      this.geminiApiUrl,
+    return this.#httpClient.post<FaceAnnotationResponse>(
+      this.#geminiApiUrl,
       body,
     );
   }

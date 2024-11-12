@@ -16,13 +16,15 @@ export class ChatComponent {
   messages: { text: string; isUser: boolean }[] = [];
   userInput: string = '';
 
-  readonly #geminiService = inject(GeminiGoogleAiService);
-  readonly loadingService: LoadingService = inject(LoadingService);
+  readonly #geminiService: GeminiGoogleAiService = inject(
+    GeminiGoogleAiService,
+  );
+  readonly #loadingService: LoadingService = inject(LoadingService);
 
   async onSubmit() {
     if (!this.userInput.trim()) return;
 
-    this.loadingService.onLoadingToggle();
+    this.#loadingService.onLoadingToggle();
 
     this.messages.push({ text: this.userInput, isUser: true });
 
@@ -40,6 +42,6 @@ export class ChatComponent {
       console.error(err);
     }
 
-    this.loadingService.onLoadingToggle();
+    this.#loadingService.onLoadingToggle();
   }
 }

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { LoaderComponent } from './components/loader/loader.component';
 import { LoadingService } from './services/loading/loading.service';
@@ -8,12 +8,7 @@ import { LoadingService } from './services/loading/loading.service';
   standalone: true,
   imports: [RouterOutlet, LoaderComponent],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  title = 'angular-gemini-recipes';
-
-  constructor(
-    public readonly loadingService: LoadingService
-  ) {}
+  constructor(public readonly loadingService: LoadingService) {}
 }
