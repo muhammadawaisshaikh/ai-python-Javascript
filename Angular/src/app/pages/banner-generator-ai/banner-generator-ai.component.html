@@ -1,1 +1,89 @@
-<p>banner-generator-ai works!</p>
+<div class="container mt-5">
+    <div class="card shadow-lg">
+        <div class="card-body">
+            <h2 class="card-title mb-4 text-center">Dynamic Banner Prompt Generator</h2>
+            <form [formGroup]="bannerForm" (ngSubmit)="generatePrompt()">
+                <div class="mb-3">
+                    <label class="form-label">Title</label>
+                    <input class="form-control" type="text" formControlName="title" />
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label">Host</label>
+                        <input class="form-control" type="text" formControlName="host" />
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label">Banner Type</label>
+                        <input class="form-control" type="text" formControlName="bannerType" />
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label">Date</label>
+                        <input class="form-control" type="date" formControlName="date" />
+                    </div>
+                    <div class="col-md-3 mb-3">
+                        <label class="form-label">Time</label>
+                        <input class="form-control" type="time" formControlName="time" />
+                    </div>
+                    <div class="col-md-3 mb-3">
+                        <label class="form-label">Duration (hrs)</label>
+                        <input class="form-control" type="number" formControlName="duration" />
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Theme Keywords (comma-separated)</label>
+                    <input class="form-control" type="text" formControlName="themeKeywords" />
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">AI Visual Elements</label>
+                    <input class="form-control" type="text" formControlName="aiVisuals" />
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Branding Elements</label>
+                    <input class="form-control" type="text" formControlName="branding" />
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Speaker Details</label>
+                    <input class="form-control" type="text" formControlName="speakerDetails" />
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Style & Feel</label>
+                    <input class="form-control" type="text" formControlName="style" />
+                </div>
+
+                <div class="text-center">
+                    <button class="btn btn-primary px-4 mt-2" type="submit">Generate Prompt</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    @if (generatedPrompt) {
+        <div class="card mt-4">
+            <div class="card-header bg-dark text-white">
+                <h5 class="mb-0">Generated Banner Prompt for Gemma3 Google Ai LLM!</h5>
+            </div>
+            <div class="card-body">
+                <pre class="text-wrap">{{ generatedPrompt }}</pre>
+            </div>
+        </div>
+
+        <div class="text-center my-4">
+            <button class="btn btn-success px-4 mt-2" (click)="generateImage()">Generate Banner</button>
+        </div>
+
+        @if (base64Image) {
+            <img [src]="'data:image/png;base64,' + base64Image" class="img-fluid mt-3" /> 
+        }
+    }
+    
+</div>
