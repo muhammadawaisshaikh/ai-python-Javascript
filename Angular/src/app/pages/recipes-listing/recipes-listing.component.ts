@@ -80,5 +80,13 @@ export class RecipesListingComponent {
       github:
         'https://github.com/muhammadawaisshaikh/ai-python-Javascript/tree/main/Python/genAi-gemini-api',
     },
+    {
+      title: 'Ai Banner Graphics Generator',
+      img: 'banner-graphics-google-ai-image-gen.png',
+      desc: 'Google Gemini Gemma 3 image generation API to create visually compelling banners and graphics',
+      url: '/banner-generator-ai',
+      github:
+        'https://github.com/muhammadawaisshaikh/ai-python-Javascript/tree/main/Angular/src/app/pages/banner-generator-ai',
+    },
   ];
 }
