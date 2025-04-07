@@ -65,4 +65,11 @@ export const routes: Routes = [
         (c) => c.HeathReportAiComponent,
       ),
   },
+  {
+    path: 'banner-generator-ai',
+    loadComponent: () =>
+      import('./pages/banner-generator-ai/banner-generator-ai.component').then(
+        (c) => c.BannerGeneratorAiComponent,
+      ),
+  },
 ];
