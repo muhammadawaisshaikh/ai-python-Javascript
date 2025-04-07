@@ -3,12 +3,12 @@ import re
 from nltk.corpus import stopwords
 from nltk.stem import WordNetLemmatizer
 from nltk.tokenize import word_tokenize
-from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.feature_extraction.text import TfidfVectorizer # ML in Python
 from sklearn.model_selection import train_test_split
 from sklearn.naive_bayes import MultinomialNB
 from sklearn.metrics import accuracy_score, classification_report
-import joblib
-import nltk
+import joblib # Joblib: running Python functions as pipeline jobs
+import nltk # The Natural Language Toolkit
 
 # Download NLTK resources
 nltk.download('stopwords')
