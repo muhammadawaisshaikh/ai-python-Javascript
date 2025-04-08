@@ -82,7 +82,7 @@ export class RecipesListingComponent {
     },
     {
       title: 'Ai Banner Graphics Generator',
-      img: 'assets/banner-graphics-google-ai-image-gen.png',
+      img: 'assets/img/banner-graphics-google-ai-image-gen.png',
       desc: 'Google Gemini Gemma 3 image generation API to create visually compelling banners and graphics',
       url: '/banner-generator-ai',
       github:
